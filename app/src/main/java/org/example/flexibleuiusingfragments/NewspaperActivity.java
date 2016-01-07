@@ -1,5 +1,6 @@
 package org.example.flexibleuiusingfragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -10,7 +11,7 @@ public class NewspaperActivity extends AppCompatActivity
         implements HeadlinesFrag.ListItemInteractionObserver {
 
 
-    private static final String ARG_HEADLINE_ID = "Lo4phi3u";
+    public static final String ARG_HEADLINE_ID = "Lo4phi3u";
 
     private String mCurSelHeadlineID;
 
@@ -38,6 +39,7 @@ public class NewspaperActivity extends AppCompatActivity
 
         if (savedInstanceState != null) {
             mCurSelHeadlineID = savedInstanceState.getString(ARG_HEADLINE_ID);
+            displayArticleDetails(mCurSelHeadlineID);
         }
     }
 
@@ -56,5 +58,22 @@ public class NewspaperActivity extends AppCompatActivity
      * though the app, in its current state, does not create that fragment (eg nor declaratively in
      * the current activity layout, neither dynamically in the activity's code). See android.support.v4.app.Fragment.isInLayout */
 
+        if (fNumOfPanesInLayout == 2) {
+            ArticleDetailsFrag displayFrag = (ArticleDetailsFrag) getSupportFragmentManager()
+                    .findFragmentById(R.id.fragArticleDetails);
+            displayFrag.setURI(selectedHeadlineID);
+            if (displayFrag.isResumed())
+                displayFrag.refresh();
+
+        } else if (fNumOfPanesInLayout == 1) {
+            Intent intent = new Intent(this, NewspaperArticleDetailsActivity1P.class);
+            intent.putExtra(ARG_HEADLINE_ID, selectedHeadlineID);
+            startActivity(intent);
+
+        } else {
+            final StringBuilder msg = new StringBuilder();
+            msg.append("\nfNumOfPanesInLayout = " + fNumOfPanesInLayout);
+            throw new IllegalStateException(msg.toString());
+        }
     }
 }

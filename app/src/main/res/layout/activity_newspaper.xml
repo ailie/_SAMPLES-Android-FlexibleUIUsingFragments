@@ -15,6 +15,11 @@
         android:id="@+id/pane1Headlines"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
+        <fragment
+            android:name="org.example.flexibleuiusingfragments.fragments.HeadlinesFrag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout="@layout/fragment_headlines"/>
     </FrameLayout>
 
 </LinearLayout>

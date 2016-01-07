@@ -8,26 +8,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#0ff"
-    tools:context=".NewspaperActivity">
-
-    <FrameLayout
-        android:id="@+id/pane1Headlines"
-        android:layout_height="match_parent"
-        android:layout_weight="40"
-        android:layout_width="0px">
-        <fragment
-            android:name="org.example.flexibleuiusingfragments.fragments.HeadlinesFrag"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout="@layout/fragment_headlines"/>
-    </FrameLayout>
+    android:background="#00f"
+    tools:context=".NewspaperArticleDetailsActivity1P">
 
     <FrameLayout
         android:id="@+id/pane2ArticleDetails"
         android:layout_height="match_parent"
-        android:layout_weight="60"
-        android:layout_width="0px">
+        android:layout_width="match_parent">
         <fragment
             android:id="@+id/fragArticleDetails"
             android:name="org.example.flexibleuiusingfragments.fragments.ArticleDetailsFrag"
